@@ -24,7 +24,7 @@ const npsUrl = `https://developer.nps.gov/api/v1/`;
 //             }
 //         }
 //         test();
-     
+
 //         res.render('homepage');
 //     } catch (err) {
 //         res.status(500).json(err);
@@ -36,23 +36,23 @@ router.get('/:string', async (req, res) => {
         // let url = `https://developer.nps.gov/api/v1/${getString}?limit=1&q=astronomy&api_key=${process.env.API_KEY}`;
         let url = `${npsUrl}parks?stateCode=${req.params.string}&limit=2&api_key=${process.env.API_KEY}`;
         // const test = async (event) => {
-            // try {
-                const response = await fetch(url);
-                const data = await response.json();
-                // console.log(data.data[0].fullName);
+        // try {
+        const response = await fetch(url);
+        const data = await response.json();
+        // console.log(data.data[0].fullName);
 
-                // console.log(data.data[0].images);
-                // const datum = data.map((arr)=>arr.get({plain:true}));
-                // console.log(datum);
-                // const res = data.data[0].fullName;
+        // console.log(data.data[0].images);
+        // const datum = data.map((arr)=>arr.get({plain:true}));
+        // console.log(datum);
+        // const res = data.data[0].fullName;
 
-            // } catch (error) {
-                // console.log(error);
-                // console.log('this isnt it');
-            // }
+        // } catch (error) {
+        // console.log(error);
+        // console.log('this isnt it');
+        // }
         // }
         // test();
-        
+
         res.render('homepage', data);
     } catch (err) {
         res.status(500).json(err);

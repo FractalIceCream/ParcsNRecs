@@ -3,7 +3,7 @@ require('dotenv').config();
 const getString = 'multimedia/galleries/';
 const str2 = 'parks';
 let url = `https://developer.nps.gov/api/v1/${str2}?limit=1&api_key=${process.env.API_KEY}`;
-const test = async(event) => {
+const test = async (event) => {
     try {
         const response = await fetch(url);
         const res = await response.json();
