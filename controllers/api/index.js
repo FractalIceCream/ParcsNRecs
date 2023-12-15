@@ -5,4 +5,8 @@ const router = require('express').Router();
 // router.use('/users', userRoutes);
 // router.use('/projects', projectRoutes);
 
+const searchRoutes = require('./searchRoutes');
+router.use('/search', searchRoutes);
+
+
 module.exports = router;
