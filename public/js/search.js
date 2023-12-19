@@ -1,14 +1,13 @@
-const { npsUrl, apiKey } = require('../../config/connection');
-
+// const { npsUrl, apiKey } = require('../../config/connection');
 const searchFormHandler = async (event) => {
     event.preventDefault();
     const searchState = document.querySelector('#search-state').value.trim();
 
     try {
-        const response = await fetch(`/api/search/${searchState}`);
+        const response = await fetch(`/search/${searchState}`);
         if (response.ok) {
-            // If successful, redirect the browser to the profile page
-            document.location.replace('/search');
+            // If successful, redirect the browser to the search page
+            document.location.replace(`/search/${searchState}`);
         } else {
             alert(response.statusText);
         }
@@ -16,7 +15,5 @@ const searchFormHandler = async (event) => {
         console.log(error);
     }
 }
-
-document
-    .querySelector('.search-form')
-    .addEventListener('submit', searchFormHandler);
+let searchBtnEl = document.querySelector('.search-form');
+searchBtnEl.addEventListener('click', searchFormHandler);
