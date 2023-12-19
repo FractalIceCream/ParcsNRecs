@@ -18,4 +18,7 @@ if (process.env.JAWSDB_URL) {
   );
 }
 
-module.exports = sequelize;
+const npsUrl = `https://developer.nps.gov/api/v1/`;
+const apiKey = process.env.API_KEY;
+
+module.exports = { sequelize, npsUrl, apiKey };
