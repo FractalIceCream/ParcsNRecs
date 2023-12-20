@@ -7,15 +7,15 @@ router.post('/', withAuth, async (req, res) => {
     // console.log(req.body);
     // console.log(req.session.user_id);
 
-    const [parkData, created] = await Parks.findOrCreate({
+    const parkData = await Parks.findOrCreate({
       where: { park_code: req.body.park_code },
       defaults: req.body
     });
-    console.log(parkData);
-    console.log(created);
-    if (!created) {
-      res.status(400).json("Park is already in the database");
-    }
+    // console.log(parkData);
+    // console.log(created);
+    // if (!created) {
+    //   res.status(400).json("Park is already in the database");
+    // }
 
     // try {
     //   console.log(parkData.id);
@@ -51,11 +51,11 @@ router.post('/', withAuth, async (req, res) => {
       // } catch (error) {
 
       // }
-
+      res.status(200).json(parkData);
     });
     // console.log(req.session.user_id);
     // console.log(user_parks);
-    res.status(200).json(parkData);
+
   } catch (err) {
     res.status(400).json(err);
   }
