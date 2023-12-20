@@ -7,7 +7,7 @@ const { get_by_StateCode } = require('../utils/helpers');
 router.get('/:string', async (req, res) => {
     try {
         const data = await get_by_StateCode(req.params.string);
-
+        console.log(npsUrl + apiKey);
         // const url = `${npsUrl}parks?stateCode=${req.params.string}&limit=10&api_key=${apiKey}`;
         // const response = await fetch(url);
         // const data = await response.json();
