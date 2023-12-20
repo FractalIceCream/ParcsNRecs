@@ -10,6 +10,8 @@ const addFavoritesHandler = async (event) => {
         const park_code = card.getAttribute('data-parkCode');
         const name = card.getAttribute('data-name');
         // console.log(parkCode);
+
+        // const getUser = await fetch(`/api/user/`)
         const response = await fetch(`/api/parks`, {
             method: 'POST',
             body: JSON.stringify({ park_code, name }),
@@ -19,16 +21,14 @@ const addFavoritesHandler = async (event) => {
         });
         if (response.ok) {
             console.log('added parks');
-            // try {
-            // console.log(response);
-            // } catch (error) {
-                
-            // }
-
-
         } else {
             alert(response.statusText);
         }
+
+        // const userParks = await fetch('/api/userParks', {
+        //     method: 'POST',
+        //     body: JSON.stringify({})
+        // });
 
         // const response = await fetch(`/search/${searchState}`);
         // if (response.ok) {
