@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { sequelize } = require('../config/connection');
 
-class Park extends Model {}
+class Parks extends Model {}
 
-Park.init(
+Parks.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,37 +11,41 @@ Park.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    park_code: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-    },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    needed_funding: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
+    // description: {
+    //   type: DataTypes.STRING,
+    // },
+    // date_created: {
+    //   type: DataTypes.DATE,
+    //   allowNull: false,
+    //   defaultValue: DataTypes.NOW,
+    // },
+    // needed_funding: {
+    //   type: DataTypes.FLOAT,
+    //   allowNull: false,
+    // },
+    // user_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'user',
+    //     key: 'id',
+    //   },
+    // },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'parks',
   }
 );
 
-module.exports = Project;
+module.exports = Parks;
