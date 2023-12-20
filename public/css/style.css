@@ -23,3 +23,16 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.media-content {
+  /* unvisited link */
+a:link {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(0, 119, 255);
+}
+
+}
