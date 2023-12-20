@@ -1,5 +1,5 @@
 {{> search-bar}}
-
+{{> profile-bar}}
 <div class="container">
   <div class="columns is-multiline">
     {{#each data as |park|}}
@@ -20,7 +20,8 @@
           <br>
           <a href="{{park.directionsUrl}}">Directions</a>
           <br>
-          <button type="submit" class="button add-favorites" data-parkCode="{{park.parkCode}}" data-name="{{park.fullName}}">Add to Favorites</button>
+          <button type="submit" class="button add-favorites" data-parkCode="{{park.parkCode}}"
+            data-name="{{park.fullName}}">Add to Favorites</button>
         </div>
       </div>
     </div>
