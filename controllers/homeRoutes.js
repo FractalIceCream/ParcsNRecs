@@ -1,6 +1,6 @@
 const router = require('express').Router();
-// const { Project, User } = require('../models');
-// const withAuth = require('../utils/auth');
+const { Project, User } = require('../models');
+const withAuth = require('../utils/auth');
 require('dotenv').config();
 
 
@@ -8,28 +8,28 @@ const test = require('../public/js/test');
 
 const npsUrl = `https://developer.nps.gov/api/v1/`;
 
-// router.get('/', async (req, res) => {
-//     try {
-//         const getString = 'multimedia/galleries/';
-//         let url = `https://developer.nps.gov/api/v1/${getString}?limit=1&q=astronomy&api_key=${process.env.API_KEY}`;
-//         const test = async (event) => {
-//             try {
-//                 const response = await fetch(url);
-//                 const data = await response.json();
-//                 console.log(data.data[0].images[0]);
+router.get('/', async (req, res) => {
+    try {
+        const getString = 'multimedia/galleries/';
+        let url = `https://developer.nps.gov/api/v1/${getString}?limit=1&q=astronomy&api_key=${process.env.API_KEY}`;
+        const test = async (event) => {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data.data[0].images[0]);
 
-//             } catch (error) {
-//                 console.log(error);
-//                 console.log('this isnt it');
-//             }
-//         }
-//         test();
+            } catch (error) {
+                console.log(error);
+                console.log('this isnt it');
+            }
+        }
+        test();
 
-//         res.render('homepage');
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.render('homepage');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 router.get('/:string', async (req, res) => {
     try {
         // const getString = 'multimedia/galleries/';
