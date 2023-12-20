@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ParcsNRecs</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="/css/jass.css">
 </head>
 
 <body>
@@ -26,10 +25,10 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <a href="/" class="navbar-item">
           National Park Services
         </a>
-
+{{!-- 
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             More
@@ -48,17 +47,21 @@
             <hr class="navbar-divider">
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
+            {{#if logged_in}}
+            <a class="button is-light" id="logout">Log out</a>
+            {{else}}
             <a class="button is-primary">
               <strong>Sign up</strong>
             </a>
-            <a class="button is-light">
+            <a class="button is-light" href="/login">
               Log in
             </a>
+            {{/if}}
           </div>
         </div>
       </div>
@@ -66,80 +69,8 @@
   </nav>
   <section class="hero is-fullheight"
     style="background-image: url('https://www.onetravel.com/going-places/wp-content/uploads/2017/12/banff-810x486.jpg'); background-size: cover; background-position: center;">
-    {{!-- <div class="hero-body"> --}}
+    <div class="flex-column justify-space-around">
 
-      <div class="flex-column justify-space-around">
-
-
-
-        <div class="container is-widescreen ">
-          <div class="notification is-info is-grouped is-grouped-centered">
-            <strong>Discover nature's masterpiece. Explore, immerse, and connect at our breathtaking national
-              park.</strong>
-            <div class="field has-addons has-addons-centered">
-              <div class="control">
-                <input class="input" type="text" placeholder="Find a National Park">
-              </div>
-              <div class="control">
-                <a class="button is-info">
-                  Search
-                </a>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                </div>
-                <div class="field-body">
-                  <div class="field is-narrow">
-                    <div class="control">
-                      <div class="select is-fullwidth">
-                        <select>
-                          <option>State</option>
-                          <option>{{{Marketing}}}</option>
-                          <option>Sales</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                </div>
-                <div class="field-body">
-                  <div class="field is-narrow">
-                    <div class="control">
-                      <div class="select is-fullwidth">
-                        <select>
-                          <option>Park</option>
-                          <option>Marketing</option>
-                          <option>Sales</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
-            </div>
-            <div class="field is-grouped is-grouped-right">
-              <p class="control">
-                <a class="button is-primary">
-                  Submit
-                </a>
-              </p>
-              <p class="control">
-                <a class="button is-light">
-                  Cancel
-                </a>
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
       <main class="container container-fluid mt-5">
         <!-- Render the sub layout -->
         {{{ body }}}
@@ -147,6 +78,24 @@
     </div>
     {{!--
     <script src="/js/test.js"></script> --}}
+
+    <div class="flex-column justify-space-around">
+      <header class="display-flex justify-space-between align-center p-2">
+        {{!-- <h1>
+          <span role="img" aria-label="money">💸</span>
+          <a href="/">ParcsNRecs!</a>
+        </h1> --}}
+      </header>
+      <main class="container container-fluid mt-5">
+        <!-- Render the sub layout -->
+        {{{ body }}}
+      </main>
+    </div>
+    {{!--
+    <script src="/js/test.js"></script> --}}
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
   </section>
 </body>
 

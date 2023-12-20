@@ -1,9 +1,10 @@
-{{#each data as |parks|}}
-<p>{{parks.fullName}}</p>
-<div>
-  {{#each parks.images as |image|}}
-  <span><img src="{{image.url}}" alt="image" style="width:200px;"></span>
-  {{/each}}
-</div>
-{{/each}}
-</div>
+<div class="container is-widescreen ">
+  <div class="notification is-info is-grouped is-grouped-centered">
+    <h1>
+      <span role="img" aria-label="money">💸</span>
+      <a href="/">ParcsNRecs!</a>
+    </h1>
+    <strong>Discover nature's masterpiece. Explore, immerse, and connect at our breathtaking national
+      park.</strong>
+    {{> search-bar}}
+  </div>
