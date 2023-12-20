@@ -11,6 +11,12 @@ router.post('/', withAuth, async (req, res) => {
       where: { park_code: req.body.park_code },
       defaults: req.body
     });
+
+    const user_parks = await UserParks.create({
+      user_id: 1,
+      parks_id: 1
+    })
+    
     // console.log(parkData);
     // console.log(created);
     // if (!created) {
@@ -38,24 +44,24 @@ router.post('/', withAuth, async (req, res) => {
     // } catch (err) {
     //   res.status(401).json(err);
     // }
-    req.session.save(async () => {
-      // req.session.user_id = userData.id;
-      req.session.logged_in = true;
+    // req.session.save(async () => {
+    //   // req.session.user_id = userData.id;
+    //   req.session.logged_in = true;
 
 
-      // try {
-      //     await UserParks.findOrCreate({
-      //         where: { user_id: req.session.user_id,
-      //                 parks_id: req.body}
-      //     })
-      // } catch (error) {
+    //   // try {
+    //   //     await UserParks.findOrCreate({
+    //   //         where: { user_id: req.session.user_id,
+    //   //                 parks_id: req.body}
+    //   //     })
+    //   // } catch (error) {
 
-      // }
-      res.status(200).json(parkData);
-    });
+    //   // }
+    //   res.status(200).json(parkData);
+    // });
     // console.log(req.session.user_id);
     // console.log(user_parks);
-
+    res.status(200).json("favorited");
   } catch (err) {
     res.status(400).json(err);
   }

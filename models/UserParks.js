@@ -17,7 +17,7 @@ UserParks.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'product',
+        model: 'user',
         key: 'id'
       }
     },
