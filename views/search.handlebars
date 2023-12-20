@@ -1,27 +1,28 @@
-<div class="columns">
-  {{#each data as |parks|}}
+{{> search-bar}}
+
+<div class="columns is-multiline">
+  {{#each data as |park|}}
   <div class="card column is-one-third">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img src="{{parks.images.[0].url}}" alt="Placeholder image">
+        <img src="{{park.images.[0].url}}" alt="Placeholder image">
       </figure>
     </div>
     <div class="card-content">
       <div class="media-content">
-        <a href="{{parks.url}}" class="title is-4">{{parks.fullName}}</a>
+        <a href="{{park.url}}" class="title is-4">{{park.fullName}}</a>
       </div>
     </div>
     <div class="content">
-      {{parks.description}}
+      {{park.description}}
       <br>
-      <a href="{{parks.directionsUrl}}">Directions</a>
+      <a href="{{park.directionsUrl}}">Directions</a>
       <br>
       {{!-- <time datetime="2016-1-1">{{parks.operatingHours.[0].standardHours}}</time> --}}
-      <button type="submit" class="button">Add to Favorites</button>
+      <button type="submit" class="button add-favorites" data-parkCode="{{park.parkCode}}"
+        data-name="{{park.fullName}}">Add to Favorites</button>
     </div>
   </div>
   {{/each}}
 </div>
-{{#if logged_in}}
-<script></script>
-{{/if}}
+<script src="/js/favorites.js"></script>
