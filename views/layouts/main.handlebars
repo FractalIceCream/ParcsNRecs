@@ -1,4 +1,5 @@
-{{!-- <!DOCTYPE html> --}}
+{{!--
+<!DOCTYPE html> --}}
 <html lang="en">
 
 <head>
@@ -28,58 +29,40 @@
         <a href="/" class="navbar-item">
           National Park Services
         </a>
-{{!-- 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More
-          </a>
 
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              About
-            </a>
-            <a class="navbar-item">
-              Jobs
-            </a>
-            <a class="navbar-item">
-              Contact
-            </a>
-            <hr class="navbar-divider">
-          </div>
-        </div>
-      </div> --}}
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            {{#if logged_in}}
-            <a class="button is-light" id="logout">Log out</a>
-            {{else}}
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light" href="/login">
-              Log in
-            </a>
-            {{/if}}
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+              <div class="buttons">
+                {{#if logged_in}}
+                <a class="button is-danger" id="logout">Log out</a>
+                {{else}}
+                <a class="button is-primary" href="/login">
+                  Log in
+                </a>
+                {{/if}}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </nav>
+
   <section class="hero is-fullheight"
     style="background-image: url('https://www.onetravel.com/going-places/wp-content/uploads/2017/12/banff-810x486.jpg'); background-size: cover; background-position: center;">
     <div class="flex-column justify-space-around">
 
-      <main class="container container-fluid mt-5">
+      {{!-- <main class="container container-fluid mt-5">
         <!-- Render the sub layout -->
         {{{ body }}}
       </main>
-    </div>
+    </div> --}}
     {{!--
     <script src="/js/test.js"></script> --}}
 
-    <div class="flex-column justify-space-around">
+    {{!-- <div class="flex-column justify-space-around">
       <header class="display-flex justify-space-between align-center p-2">
         {{!-- <h1>
           <span role="img" aria-label="money">💸</span>
@@ -95,7 +78,7 @@
     <script src="/js/test.js"></script> --}}
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
-    {{/if}}
+    {{/if}} --}}
   </section>
 </body>
 
