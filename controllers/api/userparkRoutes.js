@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const park = await Park.findOne({ 
       where: { park_code: req.body.park_code }
