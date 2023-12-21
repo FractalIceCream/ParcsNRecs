@@ -2,19 +2,23 @@ const router = require('express').Router();
 const { Park, UserPark, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
-    Park.findOrCreate({
+    await Park.findOrCreate({
       where: { park_code: req.body.park_code },
       defaults: req.body
-    }).then(([res, created]) => {
-      if (created) {
-        return UserPark.create({
-          user_id: req.session.user_id,
-          park_id: res.id
-        });
-      }
     });
+    
+    
+    
+    // .then(([res, created]) => {
+    //   if (created) {
+    //     return UserPark.create({
+    //       user_id: req.session.user_id,
+    //       park_id: res.id
+    //     });
+    //   }
+    // });
     res.status(200).json("favorited");
   } catch (err) {
     res.status(400).json(err);

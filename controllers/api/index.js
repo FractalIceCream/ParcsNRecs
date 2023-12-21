@@ -6,4 +6,7 @@ router.use('/users', userRoutes);
 const parksRoutes = require('./parksRoutes');
 router.use('/parks', parksRoutes);
 
+const userparkRoutes = require('./userparkRoutes');
+router.use('/userpark', userparkRoutes);
+
 module.exports = router;
