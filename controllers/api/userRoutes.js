@@ -2,13 +2,23 @@ const router = require('express').Router();
 const { User, Park, UserPark } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.findAll({
+      include: {model:Park}
+    });
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+})
+
+
 router.delete('/parks/:string', withAuth, async (req, res) => {
   try {
-    console.log(req.params.string + " this string here");
     const park = await Park.findOne({
       where: { park_code: req.params.string }
     });
-    console.log(park.id + " this ID here");
     if (!park) {
       res.status(400).json("Error deleting park from favorites");
       return;
