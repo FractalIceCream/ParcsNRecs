@@ -19,7 +19,9 @@ ParcsNRecs with Bulma CSS is a responsive web application that allows users to b
 
 - Search for National Parks by state.
 - View National Parks and their descriptions.
+- Make your own personal profile.
 - Mark and save your favorite Parks.
+- Save and Delete your favorite Parks.
 - Responsive design for an optimal viewing experience on both desktop and mobile devices.
 - Launched through Heroku.
 - Uses Handlebars.js as the template engine.
@@ -55,6 +57,6 @@ ParcsNRecs with Bulma CSS is a responsive web application that allows users to b
 - Keung Inthachak https://github.com/kyungda
 - Victor Samuel https://github.com/VictorSamuel-dev
 - Bulma CSS https://bulma.io/
-- National Parks Services API https://developer.nps.gov/api/v1/parks?limit=1&q=tx&api_key=7fdtwjcTfarGYlIRQhriH2mIVDPgAWZ9pnaJJa0
+- National Parks Services API https://developer.nps.gov/api/v1/
 - Handlebars.js https://handlebarsjs.com/
 - Heroku https://www.heroku.com/
