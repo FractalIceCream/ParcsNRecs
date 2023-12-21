@@ -12,10 +12,10 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.post('/:string', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const park = await Park.findOne({ 
-      where: { park_code: req.params.park_code }
+      where: { park_code: req.body.park_code }
     });
     console.log(park);
     const userpark = await UserPark.create({
