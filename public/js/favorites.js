@@ -18,6 +18,20 @@ const addFavoritesHandler = async (event) => {
         } else {
             alert(response.statusText);
         }
+
+        const addUserPark = await fetch(`/api/userpark/`, {
+            method: 'POST',
+            body: JSON.stringify({park_code}),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        if (addUserPark.ok) {
+            console.log('add User-Park Relationship');
+        } else {
+            alert(response.statusText);
+        }
+
     } catch (error) {
         console.log(error);
     }
