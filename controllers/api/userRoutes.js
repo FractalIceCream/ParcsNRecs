@@ -1,5 +1,30 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Park, UserPark } = require('../../models');
+const withAuth = require('../../utils/auth');
+
+router.delete('/parks/:string', withAuth, async (req, res) => {
+  try {
+    console.log(req.params.string + " this string here");
+    const park = await Park.findOne({
+      where: { park_code: req.params.string }
+    });
+    console.log(park.id + " this ID here");
+    if (!park) {
+      res.status(400).json("Error deleting park from favorites");
+      return;
+    }
+    const deleteUP = await UserPark.destroy({
+      where: {
+        user_id: req.session.user_id,
+        park_id: park.id
+      }
+    })
+    res.status(200).json("Park removed from favorites");
+  } catch (error) {
+    res.status(500).json("Server error");
+  }
+
+});
 
 router.post('/', async (req, res) => {
   try {

@@ -1,66 +1,20 @@
 const router = require('express').Router();
-const { Parks, UserParks } = require('../../models');
+const { Park, UserPark, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', withAuth, (req, res) => {
   try {
-    // console.log(req.body);
-    // console.log(req.session.user_id);
-
-    const parkData = await Parks.findOrCreate({
+    Park.findOrCreate({
       where: { park_code: req.body.park_code },
       defaults: req.body
+    }).then(([res, created]) => {
+      if (created) {
+        return UserPark.create({
+          user_id: req.session.user_id,
+          park_id: res.id
+        });
+      }
     });
-
-    const user_parks = await UserParks.create({
-      user_id: 1,
-      parks_id: 1
-    })
-    
-    // console.log(parkData);
-    // console.log(created);
-    // if (!created) {
-    //   res.status(400).json("Park is already in the database");
-    // }
-
-    // try {
-    //   console.log(parkData.id);
-    //   // console.log(res);
-    // const parks_id = await Parks.findByPk({
-    //   where: { park_code: parkData.park_code }
-    // });
-    // console.log(parks_id);
-    // try {
-    //   console.log(parkData.park_id);
-    //   const user_parks = await UserParks.create({
-    //     parks_id: parkData.park_id,
-    //     user_id: req.session.user_id,
-    //   })
-    //   // const user_parks = await UserParks.findOfCreate({
-    //   //   where: { parks_id: parkData.park_id, user_id: req.session.user_id },
-    //   //   default: { parks_id: parkData.park_id, user_id: req.session.user_id }
-    //   // });
-
-    // } catch (err) {
-    //   res.status(401).json(err);
-    // }
-    // req.session.save(async () => {
-    //   // req.session.user_id = userData.id;
-    //   req.session.logged_in = true;
-
-
-    //   // try {
-    //   //     await UserParks.findOrCreate({
-    //   //         where: { user_id: req.session.user_id,
-    //   //                 parks_id: req.body}
-    //   //     })
-    //   // } catch (error) {
-
-    //   // }
-    //   res.status(200).json(parkData);
-    // });
-    // console.log(req.session.user_id);
-    // console.log(user_parks);
     res.status(200).json("favorited");
   } catch (err) {
     res.status(400).json(err);
@@ -68,9 +22,10 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 
+
 router.get('/', async (req, res) => {
   try {
-    const data = await Parks.findAll({
+    const data = await Park.findAll({
       include: [{ model: User }]
     });
     res.status(200).json(data);
