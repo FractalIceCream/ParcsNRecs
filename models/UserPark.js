@@ -1,16 +1,16 @@
 const { Model, DataTypes } = require('sequelize');
 
-const { sequelize }= require('../config/connection');
+const { sequelize } = require('../config/connection');
 
-class UserParks extends Model {}
+class UserPark extends Model { }
 
-UserParks.init(
+UserPark.init(
   {
     // define columns
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      autoIncrement: true, 
+      autoIncrement: true,
       primaryKey: true
     },
     user_id: {
@@ -21,23 +21,21 @@ UserParks.init(
         key: 'id'
       }
     },
-    parks_id: {
+    park_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'parks',
+        model: 'park',
         key: 'id'
       }
     }
-
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user_parks',
+    modelName: 'user_park',
   }
 );
-
-module.exports = UserParks;
+module.exports = UserPark;

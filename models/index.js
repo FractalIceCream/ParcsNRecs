@@ -1,23 +1,23 @@
 const User = require('./User');
-const UserParks = require('./UserParks');
-const Parks = require('./Parks');
+const UserPark = require('./UserPark');
+const Park = require('./Park');
 
+//Park can belong to many Users
+Park.belongsToMany(User,
+  {
+    through: {
+      model: UserPark,
+      unique: false
+    }
+  });
 
-// Products belongToMany Tags (through ProductTag)
-User.belongsToMany(Parks, 
-    {
-      through: {
-        model: UserParks,
-        unique: false
-      }
-    });
-  // Tags belongToMany Products (through ProductTag)
-  Parks.belongsToMany(User, 
-    {
-      through: {
-        model: UserParks,
-        unique: false
-      }
-    });
-  
-module.exports = { User, UserParks, Parks };
+//User can belong to many Parks
+User.belongsToMany(Park,
+  {
+    through: {
+      model: UserPark,
+      unique: false
+    }
+  });
+
+module.exports = { User, Park, UserPark };

@@ -7,12 +7,12 @@ module.exports = {
         const parksData = await fetch(url);
         return parksData.json();
     },
+
+    //parkCode is array of the parkCodes for the fetch call
     get_by_ParkCode: async (parkCodes) => {
-        const parkCodeStr = parkCodes.join('%20');
-        console.log(parkCodeStr);
-        const url = `${npsUrl}parks?parkCode=${parkCodeStr}&limit=${parkCodes.length}&api_key=${apiKey}`;
+        const parkCodeStr = parkCodes.join('%20'); //apply a space in the url parameters
+        const url = `${npsUrl}parks?q=${parkCodeStr}&limit=${parkCodes.length}&api_key=${apiKey}`;
         const parksData = await fetch(url);
         return parksData.json();
     },
-  };
-  
+};
