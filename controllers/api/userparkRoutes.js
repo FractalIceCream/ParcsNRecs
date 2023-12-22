@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Park, UserPark, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//API get request for user-park data for dev troubleshooting
 router.get('/', async (req, res) => {
   try {
     const data = await UserPark.findAll();
@@ -12,6 +13,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+//API post request to locate park from Park tables and associate logged user to user-park data
 router.post('/', withAuth, async (req, res) => {
   try {
     const park = await Park.findOne({ 

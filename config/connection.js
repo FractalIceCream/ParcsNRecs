@@ -18,7 +18,7 @@ if (process.env.JAWSDB_URL) {
   );
 }
 
-const npsUrl = `https://developer.nps.gov/api/v1/`;
-const apiKey = process.env.API_KEY;
+const npsUrl = `https://developer.nps.gov/api/v1/`; //3rd-party API from NPS
+const apiKey = process.env.API_KEY; //api key stored in within heroku for live access as well as .env locally
 
 module.exports = { sequelize, npsUrl, apiKey };

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Park, UserPark } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//API get request for user data used for dev troubleshooting
 router.get('/', async (req, res) => {
   try {
     const users = await User.findAll({
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-
+//API delete request for user's park data by retrieving data-parkCode attribute
 router.delete('/parks/:string', withAuth, async (req, res) => {
   try {
     const park = await Park.findOne({
@@ -36,6 +37,7 @@ router.delete('/parks/:string', withAuth, async (req, res) => {
 
 });
 
+//API post request to create user 
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -51,6 +53,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+//API post request for login and validate email and password for authentication and save user session
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -82,6 +85,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+//API post request for destroy user session
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

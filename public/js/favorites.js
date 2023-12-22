@@ -2,10 +2,13 @@ const addFavoritesHandler = async (event) => {
     event.preventDefault();
 
     try {
+        //get data attributes from html
         const card = event.target;
         const park_code = card.getAttribute('data-parkCode');
         const name = card.getAttribute('data-name');
         const states = card.getAttribute('data-states');
+
+        //post request for adding park data to park table
         const response = await fetch(`/api/parks`, {
             method: 'POST',
             body: JSON.stringify({ park_code, name, states }),
@@ -19,6 +22,7 @@ const addFavoritesHandler = async (event) => {
             alert(response.statusText);
         }
 
+        //post request for adding this park and user to userpark table
         const addUserPark = await fetch(`/api/userpark/`, {
             method: 'POST',
             body: JSON.stringify({park_code}),
@@ -36,5 +40,6 @@ const addFavoritesHandler = async (event) => {
         console.log(error);
     }
 }
+//ensure all button with add-favorites class include an event listener
 let addFavoritesBtnEl = document.querySelectorAll('.add-favorites');
 addFavoritesBtnEl.forEach((btn) => btn.addEventListener('click', addFavoritesHandler));

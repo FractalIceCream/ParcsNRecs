@@ -6,7 +6,7 @@ class UserPark extends Model { }
 
 UserPark.init(
   {
-    // define columns
+    
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { npsUrl, apiKey } = require('../config/connection');
 const { get_by_StateCode } = require('../utils/helpers');
 
+//search page render and retrieve data.json from helper function by state code
 router.get('/:string', async (req, res) => {
     try {
         const data = await get_by_StateCode(req.params.string);
