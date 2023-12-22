@@ -8,17 +8,6 @@ router.post('/', withAuth, async (req, res) => {
       where: { park_code: req.body.park_code },
       defaults: req.body
     });
-    
-    
-    
-    // .then(([res, created]) => {
-    //   if (created) {
-    //     return UserPark.create({
-    //       user_id: req.session.user_id,
-    //       park_id: res.id
-    //     });
-    //   }
-    // });
     res.status(200).json("favorited");
   } catch (err) {
     res.status(400).json(err);
