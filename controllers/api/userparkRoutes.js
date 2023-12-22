@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Park, UserPark, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const data = await UserPark.findAll();
     res.status(200).json(data);
